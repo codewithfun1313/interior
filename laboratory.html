@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precision Laboratory Casework & Cleanroom Benches — EMBROSHYAL</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.currentNavMode = 'business';
+
+    window.closeResidentialMegaMenu = function() {
+      const mega = document.getElementById('residentialMegaMenu');
+      if (mega) mega.classList.add('hidden');
+    };
+    window.closeBusinessMegaMenu = function() {
+      const mega = document.getElementById('businessMegaMenu');
+      if (mega) mega.classList.add('hidden');
+    };
+
+    window.toggleNavMode = function(mode, event) {
+      if (event && event.stopPropagation) event.stopPropagation();
+      const btnHome = document.getElementById('btnToggleHome');
+      const btnBusiness = document.getElementById('btnToggleBusiness');
+      const navDefaultHome = document.getElementById('navDefaultHomeLinks') || document.getElementById('navHomeLinks');
+      const navForHome = document.getElementById('navForHomeLinks');
+      const navBusiness = document.getElementById('navBusinessLinks');
+      const businessMega = document.getElementById('businessMegaMenu');
+      const residentialMega = document.getElementById('residentialMegaMenu');
+      const mobileDefaultHome = document.getElementById('mobileDefaultHomeLinks');
+      const mobileForHome = document.getElementById('mobileForHomeLinks');
+      const mobileBusiness = document.getElementById('mobileBusinessLinks');
+      const mobileBtnHome = document.getElementById('mobileBtnToggleHome');
+      const mobileBtnBusiness = document.getElementById('mobileBtnToggleBusiness');
+
+      const activeGoldClass = 'px-3.5 sm:px-4 xl:px-5 py-1.5 rounded-full text-xs sm:text-[13px] font-bold transition-all cursor-pointer bg-gradient-to-r from-[#DFAC36] via-[#C29B38] to-[#A87B1D] text-neutral-950 shadow-[0_2px_8px_rgba(194,155,56,0.35)]';
+      const inactiveDarkClass = 'px-3.5 sm:px-4 xl:px-5 py-1.5 rounded-full text-xs sm:text-[13px] font-bold transition-all cursor-pointer bg-[#141414] hover:bg-neutral-800 text-white shadow-none';
+      const mobileActiveGold = 'flex-1 py-2 text-center rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-gradient-to-r from-[#DFAC36] via-[#C29B38] to-[#A87B1D] text-neutral-950 shadow-sm';
+      const mobileInactiveDark = 'flex-1 py-2 text-center rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#141414] text-white hover:bg-neutral-800';
+
+      window.currentNavMode = mode;
+
+      if (mode === 'business') {
+        if (btnBusiness) btnBusiness.className = activeGoldClass;
+        if (btnHome) btnHome.className = inactiveDarkClass;
+        if (mobileBtnBusiness) mobileBtnBusiness.className = mobileActiveGold;
+        if (mobileBtnHome) mobileBtnHome.className = mobileInactiveDark;
+
+        if (navDefaultHome) { navDefaultHome.classList.remove('lg:flex'); navDefaultHome.classList.add('hidden'); }
+        if (navForHome) { navForHome.classList.remove('lg:flex'); navForHome.classList.add('hidden'); }
+        if (navBusiness) { navBusiness.classList.remove('hidden'); navBusiness.classList.add('lg:flex'); }
+
+        if (businessMega) businessMega.classList.add('hidden');
+        if (residentialMega) residentialMega.classList.add('hidden');
+
+        if (mobileDefaultHome) { mobileDefaultHome.classList.add('hidden'); mobileDefaultHome.style.display = 'none'; }
+        if (mobileForHome) { mobileForHome.classList.add('hidden'); mobileForHome.style.display = 'none'; }
+        if (mobileBusiness) { mobileBusiness.classList.remove('hidden'); mobileBusiness.style.display = 'flex'; }
+      } else if (mode === 'for_home' || mode === 'home') {
+        if (btnHome) btnHome.className = activeGoldClass;
+        if (btnBusiness) btnBusiness.className = inactiveDarkClass;
+        if (mobileBtnHome) mobileBtnHome.className = mobileActiveGold;
+        if (mobileBtnBusiness) mobileBtnBusiness.className = mobileInactiveDark;
+
+        if (navDefaultHome) { navDefaultHome.classList.remove('lg:flex'); navDefaultHome.classList.add('hidden'); }
+        if (navForHome) { navForHome.classList.remove('hidden'); navForHome.classList.add('lg:flex'); }
+        if (navBusiness) { navBusiness.classList.remove('lg:flex'); navBusiness.classList.add('hidden'); }
+
+        if (businessMega) businessMega.classList.add('hidden');
+        if (residentialMega) residentialMega.classList.add('hidden');
+
+        if (mobileDefaultHome) { mobileDefaultHome.classList.add('hidden'); mobileDefaultHome.style.display = 'none'; }
+        if (mobileForHome) { mobileForHome.classList.remove('hidden'); mobileForHome.style.display = 'flex'; }
+        if (mobileBusiness) { mobileBusiness.classList.add('hidden'); mobileBusiness.style.display = 'none'; }
+      }
+
+      // If clicked on mobile (< 1024px), make sure mobile menu is visible so user sees the categories!
+      if (window.innerWidth < 1024) {
+        const menu = document.getElementById('mobileNavMenu');
+        if (menu && (menu.classList.contains('hidden') || menu.style.display === 'none')) {
+          window.toggleMobileNav();
+        }
+      }
+
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    window.showLogoHomeMenu = function(event) {
+      if (event) event.preventDefault();
+      const navDefaultHome = document.getElementById('navDefaultHomeLinks') || document.getElementById('navHomeLinks');
+      const navForHome = document.getElementById('navForHomeLinks');
+      const navBusiness = document.getElementById('navBusinessLinks');
+      const btnHome = document.getElementById('btnToggleHome');
+      const btnBusiness = document.getElementById('btnToggleBusiness');
+      const mobileDefaultHome = document.getElementById('mobileDefaultHomeLinks');
+      const mobileForHome = document.getElementById('mobileForHomeLinks');
+      const mobileBusiness = document.getElementById('mobileBusinessLinks');
+      const mobileBtnHome = document.getElementById('mobileBtnToggleHome');
+      const mobileBtnBusiness = document.getElementById('mobileBtnToggleBusiness');
+      const businessMega = document.getElementById('businessMegaMenu');
+      const residentialMega = document.getElementById('residentialMegaMenu');
+
+      const inactiveDarkClass = 'px-3.5 sm:px-4 xl:px-5 py-1.5 rounded-full text-xs sm:text-[13px] font-bold transition-all cursor-pointer bg-[#141414] hover:bg-neutral-800 text-white shadow-none';
+      const mobileInactiveDark = 'flex-1 py-2 text-center rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#141414] text-white hover:bg-neutral-800';
+
+      if (navDefaultHome) { navDefaultHome.classList.remove('hidden'); navDefaultHome.classList.add('lg:flex'); }
+      if (navForHome) { navForHome.classList.remove('lg:flex'); navForHome.classList.add('hidden'); }
+      if (navBusiness) { navBusiness.classList.remove('lg:flex'); navBusiness.classList.add('hidden'); }
+
+      if (businessMega) businessMega.classList.add('hidden');
+      if (residentialMega) residentialMega.classList.add('hidden');
+
+      if (btnHome) btnHome.className = inactiveDarkClass;
+      if (btnBusiness) btnBusiness.className = inactiveDarkClass;
+
+      if (mobileBtnHome) mobileBtnHome.className = mobileInactiveDark;
+      if (mobileBtnBusiness) mobileBtnBusiness.className = mobileInactiveDark;
+
+      if (mobileDefaultHome) { mobileDefaultHome.classList.remove('hidden'); mobileDefaultHome.style.display = 'flex'; }
+      if (mobileForHome) { mobileForHome.classList.add('hidden'); mobileForHome.style.display = 'none'; }
+      if (mobileBusiness) { mobileBusiness.classList.add('hidden'); mobileBusiness.style.display = 'none'; }
+
+      window.currentNavMode = 'logo_home';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    window.toggleMobileNav = function(e) {
+      if (e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+      }
+      const menu = document.getElementById('mobileNavMenu');
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      if (!menu) return;
+
+      const isCurrentlyHidden = menu.classList.contains('hidden') || menu.style.display === 'none';
+      if (isCurrentlyHidden) {
+        menu.classList.remove('hidden');
+        menu.style.display = 'block';
+        if (backdrop) {
+          backdrop.classList.remove('hidden');
+          backdrop.style.display = 'block';
+        }
+        document.body.classList.add('mobile-nav-open');
+      } else {
+        menu.classList.add('hidden');
+        menu.style.display = 'none';
+        if (backdrop) {
+          backdrop.classList.add('hidden');
+          backdrop.style.display = 'none';
+        }
+        document.body.classList.remove('mobile-nav-open');
+      }
+
+      const isOpen = !menu.classList.contains('hidden') && menu.style.display !== 'none';
+      document.querySelectorAll('button[onclick*="toggleMobileNav"]').forEach(function(b) {
+        b.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        b.innerHTML = isOpen
+          ? '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+          : '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>';
+      });
+    };
+
+    window.closeMobileNav = function() {
+      const menu = document.getElementById('mobileNavMenu');
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      if (menu) {
+        menu.classList.add('hidden');
+        menu.style.display = 'none';
+      }
+      if (backdrop) {
+        backdrop.classList.add('hidden');
+        backdrop.style.display = 'none';
+      }
+      document.body.classList.remove('mobile-nav-open');
+      document.querySelectorAll('button[onclick*="toggleMobileNav"]').forEach(function(b) {
+        b.setAttribute('aria-expanded', 'false');
+        b.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>';
+      });
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { gold: '#C29B38', goldHover: '#D4AB47', dark: '#161412', darkCard: '#1C1917', cream: '#FAF7F2', sand: '#F4EFE6', border: '#E8E1D5', terracotta: '#9E5B42' }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #FAF7F2; color: #161412; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+  </style>
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+  <!-- Mobile Nav Backdrop -->
+  <div id="mobileNavBackdrop" class="hidden fixed inset-0 bg-black/50 backdrop-blur-xs z-40" onclick="window.closeMobileNav()" style="display: none;"></div>
+
+  <!-- TOP UTILITY BAR -->
+  <!-- ==================== 1. TOP UTILITY ANNOUNCEMENT BAR ==================== -->
+  <!-- ==================== 1. TOP UTILITY ANNOUNCEMENT BAR (Scrolls away) ==================== -->
+  <div id="topAnnouncementBar" class="bg-black text-[#D5CEC6] text-[11px] py-2 px-4 lg:px-8 border-b border-white/10 relative z-40">
+      <div class="max-w-[1700px] w-full mx-auto flex justify-between items-center flex-nowrap gap-4">
+        
+        <!-- Searchbar in Top-Header -->
+        <div class="flex-1 max-w-xs sm:max-w-sm md:max-w-md">
+          <div class="relative w-full flex items-center">
+            <input 
+              type="text" 
+              placeholder="Search modular kitchens, wardrobes, windows, cubicles, false ceiling..." 
+              onclick="window.embroshyal ? window.embroshyal.openModal('searchModal') : null" 
+              class="w-full bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/15 focus:border-brand-gold/60 rounded-full py-1.5 pl-9 pr-4 text-xs text-white placeholder-neutral-400 outline-none transition-all cursor-pointer normal-case" 
+              readonly
+            >
+            <i data-lucide="search" class="w-3.5 h-3.5 text-brand-gold absolute left-3 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Right Side: Phone, Stores & Shopping Bag in Top-Header -->
+        <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+          <a href="tel:9812387456" class="hidden sm:flex items-center gap-1 hover:text-brand-gold transition-colors text-[11px]">
+            <i data-lucide="phone" class="w-3 h-3 text-brand-gold"></i> 9812387456
+          </a>
+          <span class="hidden sm:inline text-[#555]">|</span>
+          <a href="stores.html" class="hidden md:inline hover:text-brand-gold transition-colors text-[11px]">Panchkula Experience Centre</a>
+          <span class="hidden md:inline text-[#555]">|</span>
+          
+          <!-- Shopping Bag Button in Top-Header -->
+          <button onclick="window.embroshyal ? window.embroshyal.openDrawer('cartDrawer') : null" class="flex items-center gap-2 px-3 py-1 bg-white/10 hover:bg-white/20 border border-white/15 rounded-full text-white hover:text-brand-gold transition-all text-[11px] font-semibold cursor-pointer" title="Shopping Bag">
+            <i data-lucide="shopping-bag" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span class="hidden xs:inline uppercase tracking-wider text-[10px]">Bag</span>
+            <span id="topCartBadge" class="cart-badge bg-brand-gold text-brand-dark px-1.5 py-0.5 rounded-full text-[9px] font-bold min-w-[18px] text-center">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <!-- ==================== 2. MAIN STICKY NAVBAR (Pins to top: 0) ==================== -->
+  <header id="mainStickyNavbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-border transition-all shadow-sm">
+    <!-- MAIN NAVBAR (MATCHING EXACT SPECIFICATION & BALANCED 3-COLUMN GRID) -->
+    <div class="max-w-[1700px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-20 grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-2 xl:gap-4">
+      
+      <!-- 1. Left: Brand Logo & Wordmark (Matching Mockup with House Icon) -->
+      <div class="flex items-center justify-start shrink-0 min-w-0">
+        <button onclick="toggleMobileNav(event)" class="lg:hidden p-2 -ml-2 mr-2 text-brand-dark hover:text-brand-gold focus:outline-none" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <a href="index.html" onclick="showLogoHomeMenu(event)" class="flex items-center gap-2 group shrink-0 cursor-pointer" title="Embroshyal Home Overview">
+          <img src="images/logo.png" alt="EMBROSHYAL — We Are Exceptions" class="h-15 sm:h-16 md:h-[72px] w-auto object-contain py-0.5 transition-transform group-hover:scale-[1.03]">
+        </a>
+      </div>
+
+      <!-- 2. Center: Dynamic Navigation Links -->
+      <div class="flex items-center justify-center justify-self-center min-w-0 px-1">
+        
+        <!-- A. LOGO / HOME OVERVIEW MENU (Active by default) -->
+        <nav id="navDefaultHomeLinks" class="hidden lg:flex items-center justify-center gap-5 xl:gap-8 2xl:gap-10 text-[13.5px] xl:text-[14.5px] text-neutral-700 whitespace-nowrap shrink-0 transition-opacity duration-200">
+          <a href="index.html" class="hover:text-[#C29B38] font-medium transition-colors py-1 ">Home</a>
+          <a href="about.html" class="hover:text-[#C29B38] font-medium transition-colors py-1 ">About</a>
+          
+          <!-- Interior & Exterior Dropdown -->
+          <div class="relative group py-2">
+            <a href="furniture.html" class="inline-flex items-center gap-1 hover:text-[#C29B38] font-medium transition-colors py-1 cursor-pointer">
+              <span>Interior & Exterior</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </a>
+            <div class="absolute left-0 top-full pt-2.5 w-[340px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="furniture.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="sofa" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Furniture Atelier</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Living, Dining & Bedroom luxury pieces</div>
+                  </div>
+                </a>
+                <a href="kitchens.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="utensils" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Modular Kitchens</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">German fittings & lacquered glass islands</div>
+                  </div>
+                </a>
+                <a href="interiors.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Home Interiors & Turnkey</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Complete turnkey luxury residential execution</div>
+                  </div>
+                </a>
+                <a href="rooms.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="door-closed" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Shop by Room</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Living, Bedroom, Dining & Study zones</div>
+                  </div>
+                </a>
+                <a href="collections.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Signature Collections</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Curated architectural design collections</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Industries Link / Trigger for Business Mode -->
+          <button onclick="toggleNavMode('business')" class="hover:text-[#C29B38] font-medium transition-colors py-1 inline-flex items-center gap-1 cursor-pointer">
+            <span>Industries</span>
+          </button>
+
+          <a href="projects.html" class="hover:text-[#C29B38] font-medium transition-colors py-1 ">Projects</a>
+          <a href="contact.html" class="hover:text-[#C29B38] font-medium transition-colors py-1 ">Contact</a>
+        </nav>
+
+        <!-- B. FOR HOME / RESIDENTIAL MENU (Grouped into 4 Clean Parent Dropdowns) -->
+        <nav id="navForHomeLinks" class="hidden items-center justify-center gap-4 xl:gap-7 2xl:gap-8 text-[13px] xl:text-[14px] text-neutral-800 whitespace-nowrap shrink-0 transition-opacity duration-200">
+          
+          <!-- Parent 1: Doors & Windows (Left aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Doors & Windows</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute left-0 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="aluminium-doors-windows.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="door-closed" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Aluminium Doors & Windows</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Thermal-break slimline minimal sliding</div>
+                  </div>
+                </a>
+                <a href="upvc-doors-windows.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="panel-top" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">UPVC Doors & Windows</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">German acoustic soundproof & weatherproof</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parent 2: Kitchen & Wardrobes (Center aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Kitchen & Wardrobes</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="kitchens.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="utensils" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Modular Luxury Kitchens</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">German Blum hardware, PU & quartz islands</div>
+                  </div>
+                </a>
+                <a href="wardrobes.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="shirt" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Designer Wardrobes</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Walk-in suites, lacquered glass & LED sensors</div>
+                  </div>
+                </a>
+                <a href="appliances.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="microwave" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Built-in Appliances</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Bosch, Siemens & Faber ovens, chimneys & hobs</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parent 3: Living & Vanities (Center aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Living & Vanities</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="tv-consoles.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="tv" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">TV Consoles & Media Walls</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Marble backdrops, fluted oak & wire pathways</div>
+                  </div>
+                </a>
+                <a href="bathroom-vanities.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="bath" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Bathroom Vanities</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Marine ply BWP, Corian basins & heated mirrors</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parent 4: Surfaces & Theater (Right aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Surfaces & Theater</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute right-0 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="wall-paneling.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Architectural Wall Paneling</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Charcoal louvers, natural veneers & acoustic fabric</div>
+                  </div>
+                </a>
+                <a href="flooring.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="grid" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Luxury Flooring Solutions</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Engineered oak, herringbone & waterproof SPC</div>
+                  </div>
+                </a>
+                <a href="corian-work.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Dupont Corian Solid Surfaces</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Seamless thermoformed countertops & integrated sinks</div>
+                  </div>
+                </a>
+                <a href="home-theater.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="film" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Private Home Theaters</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Acoustic suites, star ceilings & motor recliners</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+
+        <!-- C. FOR BUSINESS / COMMERCIAL MENU (Grouped into 4 Clean Parent Dropdowns for the 13 Categories) -->
+        <nav id="navBusinessLinks" class="hidden items-center justify-center gap-4 xl:gap-7 2xl:gap-8 text-[13px] xl:text-[14px] text-neutral-800 whitespace-nowrap shrink-0 transition-opacity duration-200">
+          
+          <!-- Comm Parent 1: Doors & Partitions (Left aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Doors & Partitions</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute left-0 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="aluminium-doors-windows.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="door-closed" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Aluminium System Doors & Windows</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Thermal-break heavy commercial facades & sliding</div>
+                  </div>
+                </a>
+                <a href="upvc-doors-windows.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="panel-top" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">UPVC Doors & Windows</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Multi-chamber acoustic soundproof European profiles</div>
+                  </div>
+                </a>
+                <a href="slim-doors-partitions.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="columns" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Slim Doors & Partitions</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Minimal glass office fronts, demountable screens</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comm Parent 2: Ceilings & Walls (Center aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Ceilings & Walls</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="false-ceiling.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">False Ceiling</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Mineral fiber, aluminium baffles & metal grids</div>
+                  </div>
+                </a>
+                <a href="dry-walls.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="columns-2" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Dry Walls</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Soundproof gypsum dividing & fire-rated walls</div>
+                  </div>
+                </a>
+                <a href="acoustic-solutions.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Acoustic Solutions</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Fabric wall panels, PET baffles & echo control</div>
+                  </div>
+                </a>
+                <a href="insulation.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Insulation</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Thermal Rockwool slabs & HVAC elastomeric foam</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comm Parent 3: Flooring Systems (Center aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Flooring Systems</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="flooring.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="grid" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Flooring</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Commercial SPC, engineered hardwood & vinyl</div>
+                  </div>
+                </a>
+                <a href="false-flooring.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">False Flooring</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Raised access flooring for data centers & IT labs</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comm Parent 4: Commercial Furniture (Right aligned) -->
+          <div class="relative group py-2">
+            <button class="inline-flex items-center gap-1.5 hover:text-[#C29B38] transition-colors py-1 px-1 font-medium cursor-pointer focus:outline-none">
+              <span>Commercial Furniture</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
+            </button>
+            <div class="absolute right-0 top-full pt-2.5 w-[350px] opacity-0 invisible scale-[0.98] -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto before:content-[''] before:absolute before:-top-3 before:left-0 before:w-full before:h-4">
+              <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15),0_1px_3px_rgba(0,0,0,0.06)] border border-neutral-100 p-2.5 space-y-1 text-left ring-1 ring-black/5">
+                <a href="office-furniture.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="briefcase" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Office Furniture</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Workstation clusters, executive desks & task chairs</div>
+                  </div>
+                </a>
+                <a href="school-furniture.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">School Furniture</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Classroom dual desks, lecture halls & STEM labs</div>
+                  </div>
+                </a>
+                <a href="hospitality-furniture.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="hotel" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Hospitality Furniture</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Hotel guest suites, restaurant booths & lobby lounges</div>
+                  </div>
+                </a>
+                <a href="washroom-cubicles.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] border border-transparent hover:border-[#C29B38]/30 transition-all group/item ">
+                  <div class="w-9 h-9 rounded-xl bg-[#C29B38]/10 group-hover/item:bg-[#C29B38] group-hover/item:text-white flex items-center justify-center text-[#C29B38] shrink-0 transition-all">
+                    <i data-lucide="bath" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-neutral-900 group-hover/item:text-[#C29B38] transition-colors">Washroom Cubicles</div>
+                    <div class="text-[11px] text-neutral-500 font-normal">Solid HPL toilet partitions & SS-304 hardware</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+
+      <!-- 3. Right: Mode Switcher -->
+      <div class="hidden lg:flex items-center justify-end shrink-0 min-w-0">
+        <div class="bg-[#EFEFEF] p-1 rounded-full border border-neutral-300 shadow-[inset_0_1px_3px_rgba(0,0,0,0.08)] inline-flex items-center gap-1 shrink-0">
+          <!-- Button 1: Residential -->
+          <button 
+            id="btnToggleHome"
+            type="button"
+            onclick="toggleNavMode('for_home')" 
+            ondblclick="toggleNavMode('for_home')"
+            class="px-3.5 sm:px-4 xl:px-5 py-1.5 rounded-full text-xs sm:text-[13px] font-bold transition-all cursor-pointer bg-[#141414] hover:bg-neutral-800 text-white shadow-none" 
+            title="Residential Categories"
+          >
+            RESIDENTIAL
+          </button>
+          
+          <!-- Button 2: Commercial -->
+          <button 
+            id="btnToggleBusiness"
+            type="button"
+            onclick="toggleNavMode('business')" 
+            ondblclick="toggleNavMode('business')"
+            class="px-3.5 sm:px-4 xl:px-5 py-1.5 rounded-full text-xs sm:text-[13px] font-bold transition-all cursor-pointer bg-[#141414] hover:bg-neutral-800 text-white shadow-none" 
+            title="Commercial Solutions"
+          >
+            COMMERCIAL
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESIDENTIAL MEGA-MENU DROPDOWN (Organized in 4 Luxury Columns) -->
+    <div id="residentialMegaMenu" class="hidden bg-brand-dark/98 backdrop-blur-xl border-t border-white/10 text-white px-4 sm:px-6 lg:px-8 py-6 shadow-2xl transition-all animate-fadeIn">
+      <div class="max-w-[1700px] mx-auto">
+        <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-gold animate-pulse"></span>
+            <span class="text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">Embroshyal Residential Architectural & Interior Solutions</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <button onclick="closeResidentialMegaMenu()" class="text-neutral-400 hover:text-white p-1 cursor-pointer" title="Close">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          
+          <!-- Col 1: Doors & Windows -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="door-closed" class="w-3.5 h-3.5"></i>
+              <span>Doors & Windows</span>
+            </h6>
+            <a href="aluminium-doors-windows.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Aluminium Doors & Windows</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Slimline minimal sliding & thermal-break casement</div>
+            </a>
+            <a href="upvc-doors-windows.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">UPVC Doors & Windows</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">German multi-chamber acoustic soundproofing</div>
+            </a>
+          </div>
+
+          <!-- Col 2: Kitchen & Wardrobes -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
+              <span>Kitchen & Wardrobes</span>
+            </h6>
+            <a href="kitchens.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Modular Luxury Kitchens</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Blum soft-close drawers, PU lacquer & quartz</div>
+            </a>
+            <a href="wardrobes.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Designer Wardrobes</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Walk-in suites, sliding tinted glass & LEDs</div>
+            </a>
+            <a href="appliances.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Built-in Appliances</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Bosch, Siemens, Faber ovens, chimneys & hobs</div>
+            </a>
+          </div>
+
+          <!-- Col 3: Living & Vanities -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="tv" class="w-3.5 h-3.5"></i>
+              <span>Living & Vanities</span>
+            </h6>
+            <a href="tv-consoles.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">TV Consoles & Media Walls</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Floating marble backdrops & cable management</div>
+            </a>
+            <a href="bathroom-vanities.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Luxury Bathroom Vanities</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Marine ply BWP, Corian sinks & heated mirrors</div>
+            </a>
+          </div>
+
+          <!-- Col 4: Surfaces & Theater -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>Surfaces & Theater</span>
+            </h6>
+            <a href="wall-paneling.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Wall Paneling & Louvers</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Charcoal louvers, smoked veneer & fabric</div>
+            </a>
+            <a href="flooring.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Luxury Flooring Solutions</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Engineered hardwood oak & waterproof SPC</div>
+            </a>
+            <a href="corian-work.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Dupont Corian Surfaces</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Seamless thermoformed acrylic & seamless sinks</div>
+            </a>
+            <a href="home-theater.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Private Home Theaters</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Acoustic suites, star ceiling & recliners</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- BUSINESS / COMMERCIAL MEGA-MENU DROPDOWN (The Exact 13 Categories in 4 Columns) -->
+    <div id="businessMegaMenu" class="hidden bg-brand-dark/98 backdrop-blur-xl border-t border-white/10 text-white px-4 sm:px-6 lg:px-8 py-6 shadow-2xl transition-all animate-fadeIn">
+      <div class="max-w-[1700px] mx-auto">
+        <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-gold animate-pulse"></span>
+            <span class="text-xs uppercase tracking-[0.2em] font-bold text-brand-gold">Embroshyal Commercial, Institutional & Corporate Infrastructure</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="office-furniture.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:text-brand-gold transition-colors bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full border border-white/15">
+              <span>View Corporate Solutions</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <button onclick="closeBusinessMegaMenu()" class="text-neutral-400 hover:text-white p-1 cursor-pointer" title="Close">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          
+          <!-- Col 1: Doors & Partitions -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="door-closed" class="w-3.5 h-3.5"></i>
+              <span>Doors & Partitions</span>
+            </h6>
+            <a href="aluminium-doors-windows.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Aluminium System Doors & Windows</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Thermal-break heavy commercial facades & sliding</div>
+            </a>
+            <a href="upvc-doors-windows.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">UPVC Doors & Windows</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Multi-chamber acoustic soundproof European profiles</div>
+            </a>
+            <a href="slim-doors-partitions.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Slim Doors & Partitions</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Minimal glass office fronts, demountable screens</div>
+            </a>
+          </div>
+
+          <!-- Col 2: Ceilings & Walls -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="columns-2" class="w-3.5 h-3.5"></i>
+              <span>Ceilings & Walls</span>
+            </h6>
+            <a href="false-ceiling.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">False Ceiling</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Mineral fiber tiles, aluminium linear baffles, metal grid</div>
+            </a>
+            <a href="dry-walls.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Dry Walls</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Acoustic dividing walls, fire-rated shaft enclosures</div>
+            </a>
+            <a href="acoustic-solutions.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Acoustic Solutions</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Fabric wall panels, PET baffles, wooden acoustic slats</div>
+            </a>
+            <a href="insulation.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Insulation</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Thermal Rockwool slabs, HVAC elastomeric pipe foam</div>
+            </a>
+          </div>
+
+          <!-- Col 3: Flooring Systems -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+              <span>Flooring Systems</span>
+            </h6>
+            <a href="flooring.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Flooring</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Commercial rigid SPC, engineered oak & luxury vinyl</div>
+            </a>
+            <a href="false-flooring.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">False Flooring</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Raised access flooring for data centers, IT & control rooms</div>
+            </a>
+          </div>
+
+          <!-- Col 4: Commercial Furniture -->
+          <div class="space-y-3">
+            <h6 class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DFAC36] pb-1 border-b border-white/10 flex items-center gap-2">
+              <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+              <span>Commercial Furniture</span>
+            </h6>
+            <a href="office-furniture.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Office Furniture</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Modular workstations, height-adjustable desks & seating</div>
+            </a>
+            <a href="school-furniture.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">School Furniture</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Dual student desks, lecture hall chairs, STEM lab casework</div>
+            </a>
+            <a href="hospitality-furniture.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Hospitality Furniture</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Hotel guest suites, dining banquettes & lobby armchairs</div>
+            </a>
+            <a href="washroom-cubicles.html" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-gold/40 transition-all group block">
+              <div class="text-xs font-bold uppercase text-white group-hover:text-brand-gold transition-colors">Washroom Cubicles</div>
+              <div class="text-[10.5px] text-neutral-400 mt-1">Solid 12mm HPL toilet partitions, SS-304 hardware fittings</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileNavMenu" class="hidden lg:hidden bg-white border-b border-brand-border px-6 py-4 shadow-lg transition-all">
+      <div class="bg-[#EFEFEF] p-1 rounded-full border border-neutral-300 shadow-inner flex items-center gap-1 mb-4">
+        <button id="mobileBtnToggleHome" type="button" onclick="toggleNavMode('for_home')" ondblclick="toggleNavMode('for_home')" class="flex-1 py-2 text-center rounded-full text-xs font-bold uppercase tracking-wider bg-[#141414] text-white hover:bg-neutral-800 transition-all">
+          RESIDENTIAL
+        </button>
+        <button id="mobileBtnToggleBusiness" type="button" onclick="toggleNavMode('business')" ondblclick="toggleNavMode('business')" class="flex-1 py-2 text-center rounded-full text-xs font-bold uppercase tracking-wider bg-[#141414] text-white hover:bg-neutral-800 transition-all">
+          COMMERCIAL
+        </button>
+      </div>
+      
+      <!-- Mobile Default Home Links (Shown initially) -->
+      <div id="mobileDefaultHomeLinks" class="flex flex-col gap-1 text-xs uppercase tracking-widest font-semibold text-brand-dark">
+        <a href="index.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Home</a>
+        <a href="about.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">About</a>
+        <a href="furniture.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Interior & Exterior</a>
+        <button onclick="toggleNavMode('business')" class="py-2 hover:text-brand-gold border-b border-neutral-100 text-left flex items-center justify-between">
+          <span>Industries</span>
+          <span class="text-[9px] bg-brand-gold/15 text-brand-gold px-1.5 py-0.5 rounded-full font-bold">B2B</span>
+        </button>
+        <a href="projects.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Projects</a>
+        <a href="contact.html" class="py-2 hover:text-brand-gold">Contact</a>
+      </div>
+
+      <!-- Mobile For Home Links (Grouped into 4 Sections) -->
+      <div id="mobileForHomeLinks" class="hidden flex flex-col gap-3 text-xs uppercase tracking-widest font-semibold text-brand-dark">
+        
+        <!-- Group 1: Doors & Windows -->
+        <div class="border-b border-neutral-100 pb-2">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Doors & Windows</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="aluminium-doors-windows.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Aluminium Doors & Windows</span>
+              <i data-lucide="door-closed" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="upvc-doors-windows.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>UPVC Doors & Windows</span>
+              <i data-lucide="panel-top" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 2: Kitchen & Wardrobes -->
+        <div class="border-b border-neutral-100 pb-2">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Kitchen & Wardrobes</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="kitchens.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Modular Kitchens</span>
+              <i data-lucide="utensils" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="wardrobes.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Designer Wardrobes</span>
+              <i data-lucide="shirt" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="appliances.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Built-in Appliances</span>
+              <i data-lucide="microwave" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 3: Living & Vanities -->
+        <div class="border-b border-neutral-100 pb-2">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Living & Vanities</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="tv-consoles.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>TV Consoles</span>
+              <i data-lucide="tv" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="bathroom-vanities.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Bathroom Vanities</span>
+              <i data-lucide="bath" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 4: Surfaces & Theater -->
+        <div class="pb-1">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Surfaces & Theater</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="wall-paneling.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Wall Paneling</span>
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="flooring.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Luxury Flooring</span>
+              <i data-lucide="grid" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="corian-work.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Dupont Corian Work</span>
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="home-theater.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Home Theater</span>
+              <i data-lucide="film" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile Business Links (The Exact 13 Commercial Categories in 4 Clean Groups) -->
+      <div id="mobileBusinessLinks" class="hidden flex flex-col gap-3 text-xs uppercase tracking-widest font-semibold text-brand-dark">
+        
+        <!-- Group 1: Doors & Partitions -->
+        <div class="border-b border-neutral-100 pb-2">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Doors & Partitions</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="aluminium-doors-windows.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Aluminium Doors & Windows</span>
+              <i data-lucide="door-closed" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="upvc-doors-windows.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>UPVC Doors & Windows</span>
+              <i data-lucide="panel-top" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="slim-doors-partitions.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Slim Doors & Partitions</span>
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 2: Ceilings & Walls -->
+        <div class="border-b border-neutral-100 pb-2">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Ceilings & Walls</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="false-ceiling.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>False Ceiling</span>
+              <i data-lucide="arrow-up-to-line" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="dry-walls.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Dry Walls</span>
+              <i data-lucide="columns-2" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="acoustic-solutions.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Acoustic Solutions</span>
+              <i data-lucide="volume-2" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="insulation.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Insulation</span>
+              <i data-lucide="shield" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 3: Flooring Systems -->
+        <div class="border-b border-neutral-100 pb-2">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Flooring Systems</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="flooring.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Flooring</span>
+              <i data-lucide="grid" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="false-flooring.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>False Flooring</span>
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Group 4: Commercial Furniture -->
+        <div class="pb-1">
+          <span class="text-[10px] text-[#C29B38] font-bold block mb-1">Commercial Furniture</span>
+          <div class="pl-2 space-y-1.5">
+            <a href="office-furniture.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Office Furniture</span>
+              <i data-lucide="briefcase" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="school-furniture.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>School Furniture</span>
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="hospitality-furniture.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Hospitality Furniture</span>
+              <i data-lucide="hotel" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+            <a href="washroom-cubicles.html" class="py-1 hover:text-brand-gold flex items-center justify-between text-neutral-700">
+              <span>Washroom Cubicles</span>
+              <i data-lucide="bath" class="w-3.5 h-3.5 text-brand-gold"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow">
+    
+    <!-- Hero Banner -->
+    <section class="relative bg-brand-dark text-white overflow-hidden py-20 lg:py-28">
+      <div class="absolute inset-0 z-0 opacity-30">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=2000&q=80" alt="Technical Lab" class="w-full h-full object-cover">
+      </div>
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-4xl">
+        <div class="flex items-center gap-2 text-xs text-neutral-400 mb-4">
+          <a href="index.html" class="hover:text-brand-gold">Home</a>
+          <span>/</span>
+          <span>Commercial & Institutional</span>
+          <span>/</span>
+          <span class="text-brand-gold">Laboratory</span>
+        </div>
+        <span class="text-brand-gold uppercase tracking-[0.25em] text-xs font-semibold block mb-3">Technical Lab Furniture & Cleanroom Systems</span>
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-6">
+          Precision Laboratory Furniture for High-Stakes Research
+        </h1>
+        <p class="text-neutral-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed mb-8">
+          SEFA-compliant modular casework, chemical-resistant fume hoods, and cleanroom 316-grade stainless steel workstations engineered for pharmaceuticals, biotechnology, petrochemicals, and academia.
+        </p>
+        <div class="flex flex-wrap gap-4 items-center">
+          <button onclick="openModal('consultationModal')" class="h-12 px-8 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-widest rounded transition-all shadow-lg flex items-center gap-2">
+            Schedule Lab Technical Consultation <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-[#181512] text-white py-8 border-b border-white/10">
+      <div class="container mx-auto px-4 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="font-serif text-3xl md:text-4xl font-bold text-brand-gold block">SEFA 8</span>
+          <span class="text-xs text-neutral-400">Laboratory Casework Certified</span>
+        </div>
+        <div>
+          <span class="font-serif text-3xl md:text-4xl font-bold text-brand-gold block">ASHRAE 110</span>
+          <span class="text-xs text-neutral-400">Fume Containment Tested</span>
+        </div>
+        <div>
+          <span class="font-serif text-3xl md:text-4xl font-bold text-brand-gold block">316-Grade</span>
+          <span class="text-xs text-neutral-400">Cleanroom Stainless Steel</span>
+        </div>
+        <div>
+          <span class="font-serif text-3xl md:text-4xl font-bold text-brand-gold block">150+</span>
+          <span class="text-xs text-neutral-400">R&D Facilities Furnished</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab Products Grid -->
+    <section class="py-20 bg-brand-cream">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold block mb-2">Technical Product Lines</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mb-4">Chemical-Resistant & Cleanroom Lab Systems</h2>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Designed for harsh chemical environments, rigorous washdowns, and zero-contamination research facilities.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div class="bg-white rounded-lg border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Phenolic Island" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-brand-dark/90 text-brand-gold text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded border border-brand-gold/40">SEFA 8 Certified</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-serif text-xl font-semibold text-brand-dark mb-2">Titan Phenolic & Epoxy Research Island</h3>
+              <p class="text-neutral-600 text-xs leading-relaxed mb-4">Heavy C-frame modular workbench with Trespa TopLab chemical-resistant worktops.</p>
+              <div class="space-y-2 border-t border-brand-border pt-4 mb-6 text-xs text-neutral-700">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Solid 19mm Epoxy / Trespa top</div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Gas/water/vacuum service valves</div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Electro-galvanized epoxy coating</div>
+              </div>
+              <button onclick="openModal('consultationModal')" class="w-full mt-auto py-2.5 bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark font-semibold text-xs uppercase tracking-wider rounded transition-colors">
+                Request Technical Datasheet & Pricing
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=800&q=80" alt="Fume Hood" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-brand-dark/90 text-brand-gold text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded border border-brand-gold/40">ASHRAE 110 Tested</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-serif text-xl font-semibold text-brand-dark mb-2">AeroShield Bypass Chemical Fume Hood</h3>
+              <p class="text-neutral-600 text-xs leading-relaxed mb-4">Aerodynamic bypass design with constant face velocity control and motorized safety sash.</p>
+              <div class="space-y-2 border-t border-brand-border pt-4 mb-6 text-xs text-neutral-700">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> ASHRAE 110 containment certified</div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Acid-resistant solid phenolic liner</div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Vapor-proof LED task light fixture</div>
+              </div>
+              <button onclick="openModal('consultationModal')" class="w-full mt-auto py-2.5 bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark font-semibold text-xs uppercase tracking-wider rounded transition-colors">
+                Request Technical Datasheet & Pricing
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-brand-border overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col">
+            <div class="relative h-60 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80" alt="Cleanroom Bench" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-brand-dark/90 text-brand-gold text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded border border-brand-gold/40">ISO Cleanroom Ready</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-serif text-xl font-semibold text-brand-dark mb-2">SteriSteel 316 Cleanroom Workstation</h3>
+              <p class="text-neutral-600 text-xs leading-relaxed mb-4">Electro-polished 316-grade stainless steel tables designed for pharmaceutical cleanrooms.</p>
+              <div class="space-y-2 border-t border-brand-border pt-4 mb-6 text-xs text-neutral-700">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Perforated laminar airflow option</div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Zero-particle shedding finish</div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-gold"></i> Electrically grounded ESD safety</div>
+              </div>
+              <button onclick="openModal('consultationModal')" class="w-full mt-auto py-2.5 bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark font-semibold text-xs uppercase tracking-wider rounded transition-colors">
+                Request Technical Datasheet & Pricing
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LUXURY FOOTER -->
+  <!-- ========================================================================
+16. FOOTER
+======================================================================== -->
+<footer class="bg-[#121212] text-neutral-300 pt-16 pb-12 border-t border-white/10 text-sm">
+    <div class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="bg-white p-2 rounded-xl inline-flex items-center shadow-md">
+              <img src="images/logo.png" alt="EMBROSHYAL" class="h-14 sm:h-16 w-auto object-contain">
+            </div>
+            </div>
+          <p class="text-xs text-neutral-400 max-w-sm leading-relaxed font-light">
+            Embroshyal Private Limited — Architectural doors, windows, kitchens, wardrobes, luxury flooring, and turnkey commercial solutions. Built with over 30 years of manufacturing excellence in Panchkula.
+          </p>
+          <div class="text-xs text-neutral-400 space-y-2 pt-2">
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-[#C29B38] shrink-0"></i>
+              <span>Phase 2, Industrial Area Phase 2, Panchkula, Haryana – 134113</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-[#C29B38] shrink-0"></i>
+              <a href="tel:9812387456" class="hover:text-white transition-colors font-medium">9812387456</a>, 
+              <a href="tel:9215834176" class="hover:text-white transition-colors font-medium">92158 34176</a>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="mail" class="w-4 h-4 text-[#C29B38] shrink-0"></i>
+              <a href="mailto:embroshyal@gmail.com" class="hover:text-white transition-colors font-medium">embroshyal@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="globe" class="w-4 h-4 text-[#C29B38] shrink-0"></i>
+              <a href="http://www.embroshyal.co.in" target="_blank" class="hover:text-white transition-colors font-medium">www.embroshyal.co.in</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Residential Solutions -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-[0.18em] text-[#C29B38] mb-4">Residential</h4>
+          <ul class="space-y-2.5 text-xs text-neutral-400">
+            <li><a href="aluminium-doors-windows.html" class="hover:text-white transition-colors">Aluminium Doors & Windows</a></li>
+            <li><a href="upvc-doors-windows.html" class="hover:text-white transition-colors">UPVC Doors & Windows</a></li>
+            <li><a href="kitchens.html" class="hover:text-white transition-colors">Modular Luxury Kitchens</a></li>
+            <li><a href="wardrobes.html" class="hover:text-white transition-colors">Designer Wardrobes</a></li>
+            <li><a href="tv-consoles.html" class="hover:text-white transition-colors">TV Consoles & Media Walls</a></li>
+            <li><a href="bathroom-vanities.html" class="hover:text-white transition-colors">Bathroom Vanities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Surfaces & Tech -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-[0.18em] text-[#C29B38] mb-4">Surfaces & Tech</h4>
+          <ul class="space-y-2.5 text-xs text-neutral-400">
+            <li><a href="wall-paneling.html" class="hover:text-white transition-colors">3D Wall Paneling & Louvers</a></li>
+            <li><a href="flooring.html" class="hover:text-white transition-colors">Hardwood & SPC Flooring</a></li>
+            <li><a href="home-theater.html" class="hover:text-white transition-colors">Private Home Theaters</a></li>
+            <li><a href="appliances.html" class="hover:text-white transition-colors">Built-in Appliances</a></li>
+            <li><a href="corian-work.html" class="hover:text-white transition-colors">Dupont Corian Surfaces</a></li>
+            <li><a href="projects.html" class="hover:text-white transition-colors">Architectural Portfolio</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Corporate & Commercial -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-[0.18em] text-[#C29B38] mb-4">Commercial Solutions</h4>
+          <ul class="space-y-2.5 text-xs text-neutral-400">
+            <li><a href="office-furniture.html" class="hover:text-white transition-colors">Office Furniture</a></li>
+            <li><a href="school-furniture.html" class="hover:text-white transition-colors">School Furniture</a></li>
+            <li><a href="hospitality-furniture.html" class="hover:text-white transition-colors">Hospitality Furniture</a></li>
+            <li><a href="washroom-cubicles.html" class="hover:text-white transition-colors">Washroom Cubicles</a></li>
+            <li><a href="false-ceiling.html" class="hover:text-white transition-colors">False Ceiling Systems</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact Corporate Office</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        <div>
+          &copy; 2026 EMBROSHYAL PRIVATE LIMITED. All Rights Reserved. Panchkula, Haryana.
+        </div>
+        <div class="flex gap-4">
+          <a href="index.html" class="hover:text-neutral-400">Home</a>
+          <span>•</span>
+          <a href="about.html" class="hover:text-neutral-400">About Us</a>
+          <span>•</span>
+          <a href="contact.html" class="hover:text-neutral-400">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <div id="consultationModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-lg w-full p-6 lg:p-8 relative shadow-2xl">
+      <button onclick="closeModal('consultationModal')" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-dark"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <span class="text-brand-gold text-[10px] uppercase font-bold tracking-widest block mb-1">R&D Lab Technical Casework</span>
+      <h3 class="font-serif text-2xl text-brand-dark mb-4">Request Lab Design & Chemical Spec Sheet</h3>
+      <form onsubmit="handleConsultSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold mb-1 text-neutral-700">Company / Lab Name *</label>
+          <input type="text" required placeholder="BioPharma / R&D Institute" class="w-full border border-brand-border rounded px-3 py-2 focus:outline-none focus:border-brand-gold">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold mb-1 text-neutral-700">Work Email *</label>
+            <input type="email" required placeholder="labhead@company.com" class="w-full border border-brand-border rounded px-3 py-2 focus:outline-none focus:border-brand-gold">
+          </div>
+          <div>
+            <label class="block font-semibold mb-1 text-neutral-700">Phone Number *</label>
+            <input type="tel" required placeholder="+91 98000 00000" class="w-full border border-brand-border rounded px-3 py-2 focus:outline-none focus:border-brand-gold">
+          </div>
+        </div>
+        <button type="submit" class="w-full py-3 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-widest rounded transition-all shadow-md">
+          Submit Lab Technical Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=4.0"></script>
+  <script>
+    lucide.createIcons();
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    function handleConsultSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! Your laboratory inquiry has been received.');
+      closeModal('consultationModal');
+    }
+  </script>
+
+  <!-- MOBILE VIEW FIXED FOOTER ACTION BAR (CALL NOW & WHATSAPP) -->
+  <div id="mobileFixedActionBar" class="mobile-fixed-action-bar">
+    <div class="mobile-action-bar-inner">
+      <a href="tel:9812387456" class="mobile-action-btn btn-call" aria-label="Call Now">
+        <svg class="action-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        <span>Call Now</span>
+      </a>
+      <a href="https://wa.me/919812387456?text=Hello%20Embroshyal%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="mobile-action-btn btn-whatsapp" aria-label="WhatsApp">
+        <svg class="action-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29s-1.47-.73-1.7-.81c-.23-.09-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

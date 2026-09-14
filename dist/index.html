@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMBROSHYAL — Luxury Furniture Atelier & Architectural Living</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#C29B38',
+              'gold-hover': '#D4AB47',
+              dark: '#161412',
+              'dark-secondary': '#221E1B',
+              cream: '#FAF8F5',
+              sand: '#F4EFE6',
+              border: '#E8E2D8',
+              terracotta: '#A05A3C',
+              bronze: '#9E6B47',
+              muted: '#8E8883',
+              charcoal: '#2C2723'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #FAF8F5;
+      --bg-secondary: #F3EFE8;
+      --bg-card: #FFFFFF;
+      --bg-dark: #161412;
+      --text-primary: #1E1C1A;
+      --text-secondary: #2C2723;
+      --text-muted: #736B65;
+      --accent-gold: #C29B38;
+      --accent-clay: #A05A3C;
+      --border-light: #E8E2D8;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Floating Concierge Animations */
+    @keyframes radarPulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      70% { transform: scale(1.65); opacity: 0; }
+      100% { transform: scale(1.7); opacity: 0; }
+    }
+    @keyframes gentleFloat {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-6px); }
+    }
+    @keyframes phoneRinging {
+      0%, 80%, 100% { transform: rotate(0deg); }
+      82% { transform: rotate(14deg); }
+      84% { transform: rotate(-14deg); }
+      86% { transform: rotate(10deg); }
+      88% { transform: rotate(-10deg); }
+      90% { transform: rotate(6deg); }
+      92% { transform: rotate(0deg); }
+    }
+    @keyframes hotspotPulse {
+      0% { box-shadow: 0 0 0 0 rgba(194, 155, 56, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(194, 155, 56, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(194, 155, 56, 0); }
+    }
+
+    .animate-float-wa { animation: gentleFloat 3.8s ease-in-out infinite alternate; }
+    .animate-float-ph { animation: gentleFloat 4.2s ease-in-out 0.4s infinite alternate; }
+    .pulse-wa { animation: radarPulse 2.8s cubic-bezier(0.24, 0, 0.38, 1) infinite; }
+    .pulse-ph { animation: radarPulse 2.8s cubic-bezier(0.24, 0, 0.38, 1) 1.2s infinite; }
+    .phone-ring { animation: phoneRinging 4.5s ease-in-out infinite; transform-origin: center; }
+    .hotspot-pin { animation: hotspotPulse 2.5s infinite; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- ==================== 1. TOP UTILITY ANNOUNCEMENT BAR ==================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-border transition-all">
+    <div class="bg-brand-dark text-[#D5CEC6] text-[11px] py-1 px-4 tracking-wider uppercase flex justify-between items-center">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <span class="text-brand-gold font-bold">Complimentary White-Glove Installation</span>
+          <span class="hidden md:inline text-[#555]">•</span>
+          <span class="hidden md:inline">Architectural 3D Visualizer Included</span>
+          <span class="hidden lg:inline text-[#555]">•</span>
+          <span class="hidden lg:inline text-neutral-400">10-Year Frame Guarantee</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="tel:+912284923000" class="hover:text-brand-gold transition-colors flex items-center gap-1">
+            <i data-lucide="phone" class="w-3 h-3 text-brand-gold"></i> +91 22 8492-3000
+          </a>
+          <span class="text-[#555]">|</span>
+          <button onclick="window.embroshyal.openModal('consultationModal')" class="text-brand-gold hover:underline font-semibold">
+            Book 3D Design Session
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN NAVBAR (INLINE BALANCED) -->
+    <div class="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between flex-nowrap gap-4">
+      
+      <!-- 1. Left: Brand Wordmark + Mode Switcher -->
+      <div class="flex items-center gap-3 shrink-0">
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-brand-dark hover:text-brand-gold focus:outline-none">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <a href="index.html" class="flex flex-col group">
+          <span class="font-serif text-2xl lg:text-3xl font-semibold tracking-[0.18em] text-brand-dark group-hover:text-brand-gold transition-colors">EMBROSHYAL</span>
+          <span class="text-[9px] tracking-[0.35em] text-neutral-500 font-medium -mt-1 uppercase">Atelier & Living</span>
+        </a>
+
+        <!-- Segmented Mode Switcher: FOR HOME | FOR BUSINESS -->
+        <div class="inline-flex items-center bg-brand-sand/80 p-0.5 rounded-full border border-brand-border ml-1 lg:ml-2 shrink-0 shadow-inner">
+          <a href="index.html" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] xl:text-[11px] font-bold tracking-wider uppercase bg-brand-dark text-brand-gold shadow-sm transition-all" title="Shop Residential Furniture & Interiors">
+            <i data-lucide="home" class="w-3 h-3 text-brand-gold"></i>
+            <span>For Home</span>
+          </a>
+          <a href="workspace.html" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] xl:text-[11px] font-bold tracking-wider uppercase text-neutral-500 hover:text-brand-dark transition-all" title="Shop Commercial, Workspace & Institutional Solutions">
+            <i data-lucide="briefcase" class="w-3 h-3"></i>
+            <span>For Business</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Center: Navigation Links (Inline Single-Row) -->
+      <nav class="hidden lg:flex items-center gap-3.5 xl:gap-6 text-[11px] xl:text-xs font-semibold uppercase tracking-[0.1em] text-brand-dark whitespace-nowrap flex-nowrap">
+        <a href="index.html" class="text-brand-gold border-b-2 border-brand-gold py-1">Home</a>
+        <a href="furniture.html" class="hover:text-brand-gold transition-colors py-1">Furniture</a>
+        <a href="rooms.html" class="hover:text-brand-gold transition-colors py-1">Shop by Room</a>
+        <a href="interiors.html" class="hover:text-brand-gold transition-colors py-1">Home Interiors</a>
+        <a href="modular-kitchens.html" class="hover:text-brand-gold transition-colors py-1">Modular Kitchens</a>
+        <a href="collections.html" class="hover:text-brand-gold transition-colors py-1">Collections</a>
+        <a href="new-arrivals.html" class="hover:text-brand-gold transition-colors py-1">New Arrivals</a>
+        <a href="inspiration.html" class="hover:text-brand-gold transition-colors py-1">Inspiration</a>
+        <a href="offers.html" class="hover:text-brand-gold transition-colors py-1 text-brand-terracotta">Offers</a>
+      </nav>
+
+      <!-- 3. Right: Action Cluster (Inline) -->
+      <div class="flex items-center gap-2 lg:gap-3 shrink-0 flex-nowrap">
+        <button onclick="window.embroshyal.openModal('searchModal')" class="p-2 text-brand-dark hover:text-brand-gold rounded-full transition-colors" title="Search">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+        <button onclick="window.embroshyal.openDrawer('wishlistDrawer')" class="p-2 text-brand-dark hover:text-brand-gold rounded-full relative transition-colors" title="Wishlist">
+          <i data-lucide="heart" class="w-5 h-5"></i>
+          <span id="navWishlistBadge" class="hidden absolute top-1 right-1 w-4 h-4 bg-brand-terracotta text-white rounded-full text-[9px] font-bold flex items-center justify-center">0</span>
+        </button>
+        <button onclick="window.embroshyal.openDrawer('cartDrawer')" class="p-2 text-brand-dark hover:text-brand-gold rounded-full relative transition-colors" title="Shopping Bag">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="navCartBadge" class="hidden absolute top-1 right-1 w-4 h-4 bg-brand-gold text-brand-dark rounded-full text-[9px] font-bold flex items-center justify-center">0</span>
+        </button>
+        <button onclick="window.embroshyal.openModal('consultationModal')" class="hidden sm:inline-flex items-center justify-center h-9 xl:h-10 px-4 xl:px-5 bg-[#C29B38] hover:bg-[#D4AB47] text-[#161412] font-bold text-xs uppercase tracking-wider rounded transition-all shadow-md whitespace-nowrap">
+          Book 3D Consult
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileNavMenu" class="hidden lg:hidden bg-white border-b border-brand-border px-6 py-4 shadow-lg transition-all">
+      <div class="flex items-center gap-2 mb-4 pb-3 border-b border-brand-border">
+        <a href="index.html" class="flex-1 py-1.5 text-center rounded-full text-xs font-bold uppercase tracking-wider bg-brand-dark text-brand-gold">
+          For Home
+        </a>
+        <a href="workspace.html" class="flex-1 py-1.5 text-center rounded-full text-xs font-bold uppercase tracking-wider bg-brand-sand text-neutral-600">
+          For Business
+        </a>
+      </div>
+      <div class="flex flex-col gap-3 text-xs uppercase tracking-widest font-semibold text-brand-dark">
+        <a href="index.html" class="py-2 text-brand-gold border-b border-neutral-100">Home</a>
+        <a href="furniture.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Furniture Atelier</a>
+        <a href="rooms.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Shop by Room</a>
+        <a href="interiors.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Home Interiors</a>
+        <a href="modular-kitchens.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Modular Kitchens</a>
+        <a href="collections.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Signature Collections</a>
+        <a href="new-arrivals.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">New Arrivals</a>
+        <a href="inspiration.html" class="py-2 hover:text-brand-gold border-b border-neutral-100">Inspiration & Lookbooks</a>
+        <a href="offers.html" class="py-2 hover:text-brand-gold text-brand-terracotta">Exclusive Offers</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION ==================== -->
+  <section class="relative bg-brand-dark text-white py-24 lg:py-36 overflow-hidden" style="background: linear-gradient(to right, rgba(22,20,18,0.92) 0%, rgba(22,20,18,0.7) 55%, rgba(22,20,18,0.4) 100%), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85') center/cover;">
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-brand-gold text-xs font-semibold tracking-widest uppercase mb-4 border border-white/10">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Atelier Handcrafted • Autumn 2026 Collection</span>
+        </div>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-light tracking-wide text-white leading-tight mb-6">
+          Beautifully designed products for <br><span class="italic font-normal text-brand-gold">beautifully lived spaces.</span>
+        </h1>
+        <p class="text-neutral-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl font-light">
+          Sculptural curved seating, seasoned kiln-dried European white oaks, Italian quarried travertine and textured tactile bouclés engineered for lifelong residential harmony.
+        </p>
+
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="furniture.html" class="h-12 px-7 bg-[#C29B38] hover:bg-[#D4AB47] text-[#161412] font-bold text-xs uppercase tracking-widest rounded transition-all shadow-lg flex items-center gap-2">
+            <span>Explore Furniture</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="rooms.html" class="h-12 px-7 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded backdrop-blur-md transition-all border border-white/20 flex items-center gap-2">
+            <span>Shop by Room</span>
+          </a>
+          <button onclick="window.embroshyal.openModal('consultationModal')" class="h-12 px-6 bg-transparent hover:bg-white/5 text-brand-gold font-semibold text-xs uppercase tracking-wider rounded transition-all flex items-center gap-1.5 underline decoration-brand-gold underline-offset-4">
+            <span>Book 3D Design Session</span>
+          </button>
+        </div>
+
+        <!-- Metric Badges Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14 pt-8 border-t border-white/15 text-neutral-300">
+          <div>
+            <span class="font-serif text-3xl font-semibold text-white block">100%</span>
+            <span class="text-xs text-neutral-400">Kiln-Dried Hardwoods</span>
+          </div>
+          <div>
+            <span class="font-serif text-3xl font-semibold text-white block">10 Years</span>
+            <span class="text-xs text-neutral-400">Structural Guarantee</span>
+          </div>
+          <div>
+            <span class="font-serif text-3xl font-semibold text-white block">40+</span>
+            <span class="text-xs text-neutral-400">Artisan Material Swatches</span>
+          </div>
+          <div>
+            <span class="font-serif text-3xl font-semibold text-white block">15,000+</span>
+            <span class="text-xs text-neutral-400">Homes Transformed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. GLOBAL PRESS RECOGNITION ==================== -->
+  <section class="py-10 bg-white border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <span class="text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold whitespace-nowrap">Featured In Architectural Press</span>
+        <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-14 opacity-70">
+          <span class="font-serif text-lg font-bold tracking-widest text-brand-dark">ARCHITECTURAL DIGEST</span>
+          <span class="font-serif text-lg font-bold tracking-widest text-brand-dark">ELLE DÉCOR</span>
+          <span class="font-serif text-lg font-bold tracking-widest text-brand-dark">VOGUE LIVING</span>
+          <span class="font-serif text-lg font-bold tracking-widest text-brand-dark">WALLPAPER*</span>
+          <span class="font-serif text-lg font-bold tracking-widest text-brand-dark">FORBES INDIA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. FEATURED CATEGORIES ==================== -->
+  <section class="py-20 bg-brand-cream border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <div>
+          <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold">Made for Modern Living</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mt-1">Featured Categories</h2>
+        </div>
+        <p class="text-neutral-500 text-sm max-w-md">From sculptural conversational seating to architectural bedroom sanctuaries, each piece is engineered for longevity.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        <a href="furniture.html" class="group bg-white rounded-lg overflow-hidden border border-brand-border hover:shadow-xl transition-all flex flex-col">
+          <div class="h-44 sm:h-52 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sofas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 right-3 bg-brand-dark/80 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm">24 Pieces</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-base text-brand-dark font-medium group-hover:text-brand-gold transition-colors">Living & Sofas</h3>
+              <p class="text-neutral-400 text-xs mt-1 line-clamp-1">Curved bouclés and modular sectionals</p>
+            </div>
+            <span class="text-xs text-brand-gold font-bold flex items-center gap-1 mt-3">Shop Now →</span>
+          </div>
+        </a>
+
+        <a href="furniture.html" class="group bg-white rounded-lg overflow-hidden border border-brand-border hover:shadow-xl transition-all flex flex-col">
+          <div class="h-44 sm:h-52 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" alt="Beds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 right-3 bg-brand-dark/80 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm">18 Pieces</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-base text-brand-dark font-medium group-hover:text-brand-gold transition-colors">Beds & Sanctuaries</h3>
+              <p class="text-neutral-400 text-xs mt-1 line-clamp-1">Natural cane and fluted oak suites</p>
+            </div>
+            <span class="text-xs text-brand-gold font-bold flex items-center gap-1 mt-3">Shop Now →</span>
+          </div>
+        </a>
+
+        <a href="furniture.html" class="group bg-white rounded-lg overflow-hidden border border-brand-border hover:shadow-xl transition-all flex flex-col">
+          <div class="h-44 sm:h-52 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" alt="Dining Sets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 right-3 bg-brand-dark/80 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm">16 Pieces</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-base text-brand-dark font-medium group-hover:text-brand-gold transition-colors">Dining & Entertaining</h3>
+              <p class="text-neutral-400 text-xs mt-1 line-clamp-1">Calacatta Viola marble and teak tables</p>
+            </div>
+            <span class="text-xs text-brand-gold font-bold flex items-center gap-1 mt-3">Shop Now →</span>
+          </div>
+        </a>
+
+        <a href="furniture.html" class="group bg-white rounded-lg overflow-hidden border border-brand-border hover:shadow-xl transition-all flex flex-col">
+          <div class="h-44 sm:h-52 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80" alt="Chairs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 right-3 bg-brand-dark/80 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm">22 Pieces</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-base text-brand-dark font-medium group-hover:text-brand-gold transition-colors">Lounge & Armchairs</h3>
+              <p class="text-neutral-400 text-xs mt-1 line-clamp-1">Sculptural silhouettes and saddle leathers</p>
+            </div>
+            <span class="text-xs text-brand-gold font-bold flex items-center gap-1 mt-3">Shop Now →</span>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. SHOP BY ROOM SPATIAL EXPLORER ==================== -->
+  <section id="roomsSection" class="py-20 bg-white border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+        <div>
+          <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold">Spatial Harmony</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mt-1">Shop by Room Experience</h2>
+        </div>
+        <a href="rooms.html" class="text-xs font-bold uppercase tracking-wider text-brand-gold hover:underline flex items-center gap-1">
+          <span>Explore All 8 Spatial Zones</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-brand-sand/40 p-6 lg:p-8 rounded-xl border border-brand-border">
+        
+        <div class="lg:col-span-8 relative rounded-lg overflow-hidden min-h-[380px] lg:min-h-[480px] group shadow-inner">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80" alt="Living Room" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/25"></div>
+
+          <!-- Hotspot Pins -->
+          <div style="top: 60%; left: 35%;" class="absolute cursor-pointer group/pin" onclick="window.embroshyal.openQuickView('emb-01')">
+            <span class="hotspot-pin w-7 h-7 rounded-full bg-brand-gold/90 text-brand-dark flex items-center justify-center font-bold text-xs shadow-xl border border-white">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </span>
+            <div class="hidden group-hover/pin:block absolute bottom-9 left-1/2 -translate-x-1/2 bg-brand-dark text-white p-2 rounded shadow-2xl whitespace-nowrap text-xs z-20 border border-brand-gold/40">
+              <p class="font-serif text-brand-gold font-medium">Solis Curved Sofa</p>
+              <p class="text-[10px] text-neutral-300">₹1,48,000 • Tap to view</p>
+            </div>
+          </div>
+
+          <div style="top: 75%; left: 65%;" class="absolute cursor-pointer group/pin" onclick="window.embroshyal.openQuickView('emb-08')">
+            <span class="hotspot-pin w-7 h-7 rounded-full bg-brand-gold/90 text-brand-dark flex items-center justify-center font-bold text-xs shadow-xl border border-white">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </span>
+            <div class="hidden group-hover/pin:block absolute bottom-9 left-1/2 -translate-x-1/2 bg-brand-dark text-white p-2 rounded shadow-2xl whitespace-nowrap text-xs z-20 border border-brand-gold/40">
+              <p class="font-serif text-brand-gold font-medium">Atlas Travertine Table</p>
+              <p class="text-[10px] text-neutral-300">₹68,000 • Tap to view</p>
+            </div>
+          </div>
+
+          <div class="absolute bottom-4 left-4 bg-brand-dark/90 text-white text-xs px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-2 border border-white/10">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>Tap golden pins to inspect artisanal pieces</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col justify-between">
+          <div>
+            <span class="text-brand-gold text-xs uppercase tracking-widest font-semibold block mb-1">Spatial Setting 01</span>
+            <h3 class="font-serif text-3xl text-brand-dark font-medium mb-3">The Grand Salon & Living</h3>
+            <p class="text-neutral-600 text-sm leading-relaxed mb-6">
+              Designed for generous hosting and relaxed evenings. Organic curved bouclés, solid seasoned teak framing and monolithic travertine center tables.
+            </p>
+
+            <div class="space-y-3 py-4 border-y border-brand-border text-xs">
+              <div class="flex justify-between">
+                <span class="text-neutral-500 font-medium">Recommended Scope:</span>
+                <span class="text-brand-dark font-semibold">180 to 450 sq.ft Spaces</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-neutral-500 font-medium">Curated Materials:</span>
+                <span class="text-brand-dark font-semibold">Teak • Bouclé • Travertine</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-neutral-500 font-medium">Handover Timeline:</span>
+                <span class="text-brand-dark font-semibold">3 to 4 Weeks</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-brand-dark text-white p-6 rounded-lg mt-6">
+            <h4 class="font-serif text-lg font-normal mb-1">Need a custom 3D layout plan?</h4>
+            <p class="text-neutral-400 text-xs mb-4">Our interior architects provide free spatial 3D renders tailored to your room footprint.</p>
+            <button onclick="window.embroshyal.openModal('consultationModal')" class="w-full h-11 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-widest rounded transition-all shadow-md">
+              Book Free 3D Consultation
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. NEW ARRIVALS & SEASONAL DROPS ==================== -->
+  <section class="py-20 bg-brand-cream border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+        <div>
+          <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold">Autumn Drop</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mt-1">Fresh Atelier Releases</h2>
+        </div>
+        <a href="new-arrivals.html" class="text-xs font-bold uppercase tracking-wider text-brand-gold hover:underline flex items-center gap-1">
+          <span>View All Drops</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="homeNewArrivalsGrid">
+        <!-- Injected via JavaScript from window.embroshyal.products -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 7. PRODUCT SPOTLIGHT: THE SOLIS SOFA ==================== -->
+  <section class="py-20 bg-white border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 relative rounded-xl overflow-hidden shadow-2xl group">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85" alt="Solis Curved Sofa" class="w-full h-[480px] object-cover group-hover:scale-105 transition-transform duration-700">
+          <span class="absolute top-4 left-4 bg-brand-dark text-brand-gold font-serif text-xs px-3.5 py-1.5 rounded-full border border-brand-gold/30">
+            Atelier Masterpiece
+          </span>
+        </div>
+
+        <div class="lg:col-span-6">
+          <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold block mb-2">Spotlight Curation</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mb-4">Solis Curved Bouclé 3-Seater Sofa</h2>
+          <p class="text-neutral-600 text-sm leading-relaxed mb-6">
+            The Solis balances architectural monumentality with embracing organic contours. Hand-upholstered in heavy tactile Belgian bouclé over an internal frame of kiln-dried Old-Growth Burmese Teak.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 py-5 border-y border-brand-border text-xs mb-6">
+            <div>
+              <span class="text-neutral-400 block mb-1">Dimensions:</span>
+              <strong class="text-brand-dark font-medium">W: 240cm × D: 105cm × H: 78cm</strong>
+            </div>
+            <div>
+              <span class="text-neutral-400 block mb-1">Timber Core:</span>
+              <strong class="text-brand-dark font-medium">FSC Kiln-Seasoned Teak (8% Moisture)</strong>
+            </div>
+            <div>
+              <span class="text-neutral-400 block mb-1">Textile:</span>
+              <strong class="text-brand-dark font-medium">Nano-Barrier Belgian Bouclé</strong>
+            </div>
+            <div>
+              <span class="text-neutral-400 block mb-1">Structural Warranty:</span>
+              <strong class="text-brand-dark font-medium">10 Years Comprehensive</strong>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <span class="text-xs text-neutral-400 block">Atelier Direct Price</span>
+              <span class="font-serif text-3xl font-bold text-brand-dark">₹1,48,000</span>
+            </div>
+            <div class="flex gap-3">
+              <button onclick="window.embroshyal.addToCart('emb-01')" class="h-11 px-6 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-wider rounded transition-all shadow-md">
+                Add to Bag
+              </button>
+              <button onclick="window.embroshyal.openQuickView('emb-01')" class="h-11 px-5 border border-brand-border hover:border-brand-gold text-brand-dark text-xs font-semibold rounded transition-all">
+                Quick View
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8. BESPOKE MODULAR KITCHENS & LIVING ARCHITECTURE ==================== -->
+  <section class="py-20 bg-brand-sand/50 border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold block mb-2">Culinary Sanctuaries</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mb-4">Bespoke Modular Kitchens</h2>
+          <p class="text-neutral-600 text-sm leading-relaxed mb-6">
+            Engineered specifically for heavy Indian cooking. Marine-grade BWP 710 boiling water resistant plywood carcasses, nanotech super-matte anti-fingerprint acrylic shutters, and Austrian Blum motorized soft-close mechanics.
+          </p>
+
+          <div class="space-y-3 text-xs text-neutral-600 mb-8">
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-brand-gold"></i>
+              <span>Boiling Water Resistant (BWP 710) Marine Plywood with 10-Yr Warranty</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-brand-gold"></i>
+              <span>Austrian Blum Servo-Drive motorized lift and soft-close drawer runners</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-brand-gold"></i>
+              <span>Calacatta quartz & non-porous sintered stone surfaces (turmeric proof)</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-brand-gold"></i>
+              <span>Guaranteed 45-day turnkey delivery with clean, dust-free installation</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="modular-kitchens.html" class="h-11 px-6 bg-brand-dark text-white hover:bg-brand-dark/90 font-bold text-xs uppercase tracking-wider rounded transition-all flex items-center gap-2">
+              <span>Explore Kitchen Layouts</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <button onclick="window.embroshyal.openModal('consultationModal')" class="h-11 px-6 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-wider rounded transition-all">
+              Book Free Kitchen 3D Plan
+            </button>
+          </div>
+        </div>
+
+        <div class="relative rounded-xl overflow-hidden shadow-2xl group">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85" alt="Modular Kitchen" class="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute bottom-4 left-4 right-4 bg-brand-dark/90 text-white p-4 rounded backdrop-blur-md border border-white/10 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-brand-gold uppercase tracking-widest block font-bold">Featured Layout</span>
+              <h5 class="font-serif text-sm font-medium">The Island Waterfall Suite</h5>
+            </div>
+            <a href="modular-kitchens.html" class="text-xs text-brand-gold hover:underline font-bold">Calculate Cost →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 9. ARTISANAL CRAFTSMANSHIP & MATERIAL LAB ==================== -->
+  <section class="py-20 bg-brand-dark text-white border-b border-white/10">
+    <div class="container mx-auto px-4 lg:px-8">
+      
+      <div class="max-w-3xl mb-14">
+        <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold block mb-2">Mastery of Detail</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-light text-white leading-tight mb-4">
+          Where Craft Meets Character
+        </h2>
+        <p class="text-neutral-300 text-sm leading-relaxed font-light">
+          From responsibly harvested FSC European hardwoods to Italian quarried marble slabs and hand-waxed champagne brass, each material is selected for tactile longevity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-brand-darkCard p-6 rounded-lg border border-white/10 hover:border-brand-gold/50 transition-all">
+          <div class="h-40 rounded overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef5?auto=format&fit=crop&w=600&q=80" alt="Hardwoods" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold block mb-1">Seasoned Timbers</span>
+          <h4 class="font-serif text-lg text-white font-medium mb-2">European Oak & Teak</h4>
+          <p class="text-neutral-400 text-xs leading-relaxed">Kiln-dried down to 8–10% moisture content for lifelong stability against warping, splitting and tropical humidity.</p>
+        </div>
+
+        <div class="bg-brand-darkCard p-6 rounded-lg border border-white/10 hover:border-brand-gold/50 transition-all">
+          <div class="h-40 rounded overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Italian Bouclé" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold block mb-1">Textile Lab</span>
+          <h4 class="font-serif text-lg text-white font-medium mb-2">Italian Bouclé & Linens</h4>
+          <p class="text-neutral-400 text-xs leading-relaxed">Multi-ply tactile textures treated with hydrophobic nano-barrier against wine and everyday spills.</p>
+        </div>
+
+        <div class="bg-brand-darkCard p-6 rounded-lg border border-white/10 hover:border-brand-gold/50 transition-all">
+          <div class="h-40 rounded overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" alt="Viola Marble" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold block mb-1">Quarried Stone</span>
+          <h4 class="font-serif text-lg text-white font-medium mb-2">Calacatta Viola Slabs</h4>
+          <p class="text-neutral-400 text-xs leading-relaxed">Solid 20mm quarried slabs hand-honed to a velvet matte finish, penetrating-sealed to resist acidity.</p>
+        </div>
+
+        <div class="bg-brand-darkCard p-6 rounded-lg border border-white/10 hover:border-brand-gold/50 transition-all">
+          <div class="h-40 rounded overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=600&q=80" alt="Champagne Brass" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold block mb-1">Metal Foundry</span>
+          <h4 class="font-serif text-lg text-white font-medium mb-2">Antiqued Virgin Brass</h4>
+          <p class="text-neutral-400 text-xs leading-relaxed">Solid heavy brass hand-rubbed with organic waxes, developing a rich nuanced depth over decades of touch.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 10. CUSTOMER STORIES & VERIFIED REVIEWS ==================== -->
+  <section class="py-20 bg-white border-b border-brand-border" id="customerStoriesSection">
+    <div class="container mx-auto px-4 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold">Homeowner Reflections</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mt-1 mb-2">Loved by Discerning Families</h2>
+        <p class="text-neutral-500 text-sm">Over 15,000 homes across Mumbai, Delhi, Bengaluru & Hyderabad live with Embroshyal craft every day.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="bg-brand-sand/40 p-8 rounded-xl border border-brand-border flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-brand-gold gap-1">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Verified Homeowner
+              </span>
+            </div>
+            <p class="text-neutral-700 text-sm leading-relaxed italic mb-6">
+              “The level of craftsmanship is comparable to top Italian luxury houses we saw in Milan, but tailored specifically to how we entertain at home. The curved Solis sofa is the star of every evening.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Ananya Mehta" class="w-11 h-11 rounded-full object-cover">
+            <div>
+              <strong class="font-serif text-sm text-brand-dark block">Ananya & Siddharth Mehta</strong>
+              <span class="text-xs text-neutral-500">Worli Seaface Penthouse, South Mumbai</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-brand-sand/40 p-8 rounded-xl border border-brand-border flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-brand-gold gap-1">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Verified Homeowner
+              </span>
+            </div>
+            <p class="text-neutral-700 text-sm leading-relaxed italic mb-6">
+              “From the initial 3D visualization by their designer to white-glove assembly, the experience was completely frictionless. The natural woven cane headboard feels remarkably breathable and luxurious.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-brand-border">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Vikramaditya Roy" class="w-11 h-11 rounded-full object-cover">
+            <div>
+              <strong class="font-serif text-sm text-brand-dark block">Vikramaditya Roy</strong>
+              <span class="text-xs text-neutral-500">Whitefield Villa Residence, Bengaluru</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-brand-border text-center">
+        <div>
+          <span class="font-serif text-3xl font-bold text-brand-dark">4.94 / 5</span>
+          <span class="text-xs text-neutral-500 block mt-1">Average Review Score (2,840+ Reviews)</span>
+        </div>
+        <div>
+          <span class="font-serif text-3xl font-bold text-brand-dark">99.2%</span>
+          <span class="text-xs text-neutral-500 block mt-1">On-Time Turnkey Delivery Record</span>
+        </div>
+        <div>
+          <span class="font-serif text-3xl font-bold text-brand-dark">10 Years</span>
+          <span class="text-xs text-neutral-500 block mt-1">Comprehensive Frame & Core Guarantee</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 11. BEFORE & AFTER ARCHITECTURAL COMPARISON ==================== -->
+  <section class="py-20 bg-brand-cream border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8 max-w-5xl">
+      
+      <div class="text-center mb-12">
+        <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold">Spatial Reimagination</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark mt-1">Real Residence Transformations</h2>
+        <p class="text-neutral-500 text-sm mt-1">See how our spatial interior team breathes calmness, light, and tailored craft into bare concrete shells.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-6 lg:p-8 rounded-xl border border-brand-border shadow-sm">
+        <div class="space-y-4">
+          <div class="relative rounded-lg overflow-hidden h-64 border border-brand-border">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Before" class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 bg-red-800 text-white text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded">Before</span>
+          </div>
+          <div class="relative rounded-lg overflow-hidden h-64 border border-brand-border shadow-lg">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="After" class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 bg-emerald-800 text-white text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded">After: Embroshyal</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="text-brand-gold text-xs uppercase tracking-widest font-semibold block mb-1">Case Study • Bandra West, Mumbai</span>
+          <h3 class="font-serif text-2xl text-brand-dark font-medium mb-3">Cluttered 1990s Hall → Sculptural Organic Haven</h3>
+          <p class="text-neutral-600 text-xs leading-relaxed mb-6">
+            We removed dark heavy partitions, introduced acoustic fluted oak walling, opened panoramic coastal sightlines, and anchored the space with our custom curved Solis bouclé lounge.
+          </p>
+
+          <ul class="space-y-2 text-xs text-neutral-600 mb-6">
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i>
+              <span>Curved bouclé conversation seating</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i>
+              <span>Fluted acoustic oak wood paneling</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i>
+              <span>Warm 2700K indirect cove architectural lighting</span>
+            </li>
+          </ul>
+
+          <button onclick="window.embroshyal.openModal('consultationModal')" class="w-full h-11 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-widest rounded transition-all shadow-md">
+            Request Similar Transformation Plan
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 12. FAQ ACCORDION ==================== -->
+  <section class="py-20 bg-white border-b border-brand-border">
+    <div class="container mx-auto px-4 lg:px-8 max-w-3xl">
+      
+      <div class="text-center mb-12">
+        <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold">Clarifications</span>
+        <h2 class="font-serif text-3xl text-brand-dark mt-1">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-brand-sand/40 p-5 rounded-lg border border-brand-border">
+          <h4 class="font-serif text-base text-brand-dark font-medium mb-2">Are all Embroshyal furniture pieces made from genuine solid wood?</h4>
+          <p class="text-neutral-600 text-xs leading-relaxed">
+            Yes. We exclusively use Grade-A Burmese Teak and American White Oak seasoned down to 8–10% moisture content in our controlled kiln chambers. We never compromise on structural durability with cheap MDF or low-grade particle boards in our core frames.
+          </p>
+        </div>
+
+        <div class="bg-brand-sand/40 p-5 rounded-lg border border-brand-border">
+          <h4 class="font-serif text-base text-brand-dark font-medium mb-2">How does the 3D Architectural Design Consultation work?</h4>
+          <p class="text-neutral-600 text-xs leading-relaxed">
+            Our interior architects provide a complimentary consultation either virtually or in-home. We analyze your floor plan, lighting, and lifestyle requirements to generate photorealistic 3D spatial renders and detailed material swatches at zero charge.
+          </p>
+        </div>
+
+        <div class="bg-brand-sand/40 p-5 rounded-lg border border-brand-border">
+          <h4 class="font-serif text-base text-brand-dark font-medium mb-2">What does Complimentary White-Glove Installation cover?</h4>
+          <p class="text-neutral-600 text-xs leading-relaxed">
+            Every order includes scheduled room-of-choice placement, uncrating, full precision joinery assembly by factory-trained artisans, leveling, hardware tuning, and complete packaging removal with zero mess left behind.
+          </p>
+        </div>
+
+        <div class="bg-brand-sand/40 p-5 rounded-lg border border-brand-border">
+          <h4 class="font-serif text-base text-brand-dark font-medium mb-2">What is the delivery timeline for made-to-order pieces?</h4>
+          <p class="text-neutral-600 text-xs leading-relaxed">
+            In-stock items ship within 48 to 72 hours. Custom handcrafted pieces with bespoke upholstery fabrics or stone cuts typically require 3 to 4 weeks for artisanal creation and seasoning.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 13. FINAL CTA BANNER ==================== -->
+  <section class="py-20 bg-brand-dark text-white relative overflow-hidden" style="background: linear-gradient(rgba(22,20,18,0.92), rgba(22,20,18,0.92)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80') center/cover;">
+    <div class="container mx-auto px-4 lg:px-8 text-center relative z-10 max-w-2xl">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.2em] font-bold block mb-2">Begin Your Journey</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-light text-white mb-4">Elevate Your Living Architecture</h2>
+      <p class="text-neutral-300 text-sm leading-relaxed mb-8">
+        Step into an Embroshyal flagship experience centre or schedule a private spatial consultation with our senior designers today.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="furniture.html" class="h-12 px-8 bg-[#C29B38] hover:bg-[#D4AB47] text-brand-dark font-bold text-xs uppercase tracking-widest rounded transition-all shadow-lg flex items-center gap-2">
+          <span>Explore Full Catalog</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+        <button onclick="window.embroshyal.openModal('consultationModal')" class="h-12 px-8 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded backdrop-blur-md transition-all border border-white/20">
+          Book Free 3D Design Session
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 14. LUXURY 4-COLUMN FOOTER ==================== -->
+  <footer class="bg-brand-dark text-white pt-16 pb-28 md:pb-16 border-t border-white/10">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div class="md:col-span-1">
+          <a href="index.html" class="inline-block mb-1">
+            <span class="font-serif text-2xl font-semibold tracking-widest text-white block">EMBROSHYAL</span>
+            <span class="text-[10px] tracking-[0.3em] text-brand-gold uppercase block">Atelier & Living</span>
+          </a>
+          <p class="text-neutral-400 text-xs leading-relaxed mt-3">“Beautifully designed products for beautifully lived spaces.”</p>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Spatial Ateliers</h4>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="rooms.html" class="hover:text-brand-gold">Living Room</a></li>
+            <li><a href="rooms.html" class="hover:text-brand-gold">Bedroom</a></li>
+            <li><a href="rooms.html" class="hover:text-brand-gold">Dining Room</a></li>
+            <li><a href="modular-kitchens.html" class="hover:text-brand-gold">Modular Kitchens</a></li>
+            <li><a href="interiors.html" class="hover:text-brand-gold">Home Interiors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Collections</h4>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="collections.html" class="hover:text-brand-gold">The Contemporary Edit</a></li>
+            <li><a href="collections.html" class="hover:text-brand-gold">The Heritage Edit</a></li>
+            <li><a href="collections.html" class="hover:text-brand-gold">The Minimal Edit</a></li>
+            <li><a href="collections.html" class="hover:text-brand-gold">The Luxe Edit</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">Experience Centres</h4>
+          <p class="text-xs text-neutral-400 mb-2">Flagship Showrooms in Mumbai, South Delhi, Bengaluru & Hyderabad.</p>
+          <a href="stores.html" class="inline-flex items-center h-9 px-4 bg-[#C29B38] text-brand-dark font-bold text-xs uppercase tracking-wider rounded mt-2">
+            Book Private Tour
+          </a>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-500 gap-4">
+        <span>© 2026 Embroshyal Living Private Limited. All rights reserved.</span>
+        <span>Crafted with Sustainable FSC Certified Timbers & Artisanal Joinery.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FIXED FLOATING WHATSAPP & PHONE CONCIERGE -->
+  <aside aria-label="Quick Concierge Support" class="fixed bottom-[74px] md:bottom-8 right-4 md:right-7 flex flex-row md:flex-col gap-3 z-50">
+    <div class="relative flex items-center justify-center animate-float-wa group">
+      <span class="absolute w-11 h-11 md:w-13 md:h-13 rounded-full bg-emerald-500/40 pointer-events-none pulse-wa"></span>
+      <a href="https://wa.me/918003923000?text=Hello%20Embroshyal%2C%20I%20would%20like%20to%20inquire%20about%20your%20luxury%20furniture." target="_blank" class="relative w-11 h-11 md:w-13 md:h-13 bg-gradient-to-tr from-[#25D366] to-[#1EBE5D] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform cursor-pointer border border-white/30" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      </a>
+      <span class="hidden md:group-hover:inline-block absolute right-16 top-1/2 -translate-y-1/2 bg-brand-dark/95 text-white text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap border border-brand-gold/30 shadow-lg pointer-events-none">
+        WhatsApp Concierge
+      </span>
+    </div>
+    <div class="relative flex items-center justify-center animate-float-ph group">
+      <span class="absolute w-11 h-11 md:w-13 md:h-13 rounded-full bg-brand-gold/40 pointer-events-none pulse-ph"></span>
+      <a href="tel:+912284923000" class="relative w-11 h-11 md:w-13 md:h-13 bg-brand-dark text-brand-gold hover:bg-brand-gold hover:text-brand-dark rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all cursor-pointer border border-brand-gold/40" title="Call +91 22 8492-3000">
+        <i data-lucide="phone" class="w-5 h-5 phone-ring"></i>
+      </a>
+      <span class="hidden md:group-hover:inline-block absolute right-16 top-1/2 -translate-y-1/2 bg-brand-dark/95 text-white text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap border border-brand-gold/30 shadow-lg pointer-events-none">
+        Call +91 22 8492-3000
+      </span>
+    </div>
+  </aside>
+
+  <!-- STICKY MOBILE BOTTOM NAVIGATION -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 h-15 bg-white/95 backdrop-blur-md border-t border-brand-border grid grid-cols-5 items-center z-40 shadow-lg py-1.5">
+    <a href="index.html" class="flex flex-col items-center justify-center text-brand-gold">
+      <i data-lucide="home" class="w-4 h-4"></i>
+      <span class="text-[10px] mt-0.5 font-medium">Home</span>
+    </a>
+    <a href="furniture.html" class="flex flex-col items-center justify-center text-neutral-500 hover:text-brand-gold">
+      <i data-lucide="grid" class="w-4 h-4"></i>
+      <span class="text-[10px] mt-0.5 font-medium">Catalog</span>
+    </a>
+    <button onclick="window.embroshyal.openModal('searchModal')" class="flex flex-col items-center justify-center text-neutral-500 hover:text-brand-gold">
+      <i data-lucide="search" class="w-4 h-4"></i>
+      <span class="text-[10px] mt-0.5 font-medium">Search</span>
+    </button>
+    <button onclick="window.embroshyal.openDrawer('wishlistDrawer')" class="flex flex-col items-center justify-center text-neutral-500 hover:text-brand-gold relative">
+      <i data-lucide="heart" class="w-4 h-4"></i>
+      <span class="text-[10px] mt-0.5 font-medium">Wishlist</span>
+    </button>
+    <button onclick="window.embroshyal.openDrawer('cartDrawer')" class="flex flex-col items-center justify-center text-neutral-500 hover:text-brand-gold relative">
+      <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+      <span class="text-[10px] mt-0.5 font-medium">Cart</span>
+    </button>
+  </nav>
+
+  <!-- Unified Vanilla JS Architecture -->
+  <script src="js/app.js"></script>
+
+  <script>
+    // Populate New Arrivals dynamically from app.js data
+    window.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('homeNewArrivalsGrid');
+      if (grid && window.embroshyal && window.embroshyal.products) {
+        const top6 = window.embroshyal.products.slice(0, 6);
+        grid.innerHTML = top6.map(p => `
+          <div class="bg-white border border-brand-border rounded-lg overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all group">
+            <div class="relative h-64 bg-brand-sand overflow-hidden cursor-pointer" onclick="window.embroshyal.openQuickView('${p.id}')">
+              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 left-3 bg-brand-dark text-white text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded">${p.tag || 'Atelier'}</span>
+              <button onclick="event.stopPropagation(); window.embroshyal.toggleWishlist('${p.id}')" class="absolute top-3 right-3 p-2 bg-white/90 text-brand-dark rounded-full hover:text-brand-terracotta transition-colors shadow">
+                <i data-lucide="heart" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-neutral-400 font-bold block mb-1">${p.cat} • ${p.room}</span>
+                <h4 onclick="window.embroshyal.openQuickView('${p.id}')" class="font-serif text-base text-brand-dark font-medium leading-snug line-clamp-2 min-h-[2.6rem] cursor-pointer hover:text-brand-gold transition-colors">${p.name}</h4>
+              </div>
+              <div class="pt-3 mt-4 border-t border-brand-border flex justify-between items-center">
+                <span class="text-sm font-bold text-brand-dark">₹${p.price.toLocaleString('en-IN')}</span>
+                <button onclick="window.embroshyal.addToCart('${p.id}')" class="text-xs font-bold text-brand-gold hover:underline flex items-center gap-1">
+                  Add to Bag →
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (window.lucide) window.lucide.createIcons();
+    });
+
+    function toggleMobileNav() {
+      const menu = document.getElementById('mobileNavMenu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>
